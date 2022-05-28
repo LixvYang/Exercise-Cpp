@@ -34,12 +34,21 @@ int main() {
   // double obj = 3.14, &pd = &obj;
   // void *pv = &obj;
   // pv = pd;
-  int i = 42;
-  int p = 40;
-  int *pl= &i;
-  *pl = *pl * *pl;
+  // int i = 42;
+  // int p = 40;
+  // int *pl= &i;
+  // *pl = *pl * *pl;
   // pl = &p;
-  pl = &p;
-  std::cout << *pl << std::endl;
-  std::cout << i << std::endl;
+  // pl = &p;
+  // std::cout << *pl << std::endl;
+  // std::cout << i << std::endl;
+
+  int age = 17;
+  int &ageRef1 = age;
+  // int *p = &age;
+  // std::cout << *p << std::endl;
+  std::cout << &ageRef1 << std::endl;
+  std::cout << &age << std::endl;
+  // std::cout << p << std::endl;
+  // std::cout << &p << std::endl;
 }
