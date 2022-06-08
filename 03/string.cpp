@@ -20,4 +20,6 @@ int main() {
   getline(cin, s);
   cout << s.size() << endl;
   return 0;
+
+  // vim code
 }
