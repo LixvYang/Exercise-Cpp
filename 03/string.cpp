@@ -22,4 +22,11 @@ int main() {
   return 0;
 
   // vim code
+  for (i = 0; i < 10; ++i) {
+    if (i % 2 == 1) {
+      cout << i << endl; 
+    }
+  }
+
+  
 }
