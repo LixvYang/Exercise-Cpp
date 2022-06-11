@@ -27,6 +27,8 @@ int main() {
       cout << i << endl; 
     }
   }
+  string a(10, 'a');
+  
 
   
 }
