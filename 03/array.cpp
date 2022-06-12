@@ -1,11 +1,13 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<cstring>
 using std::string;
 using std::cout; 
 using std::cin; 
 using std::endl;
 using std::vector;
+using namespace std;
 
 int main(){
   // unsigned cnt = 42;
@@ -60,19 +62,37 @@ int main(){
   /* int *e = &arr[10]; */
   /* for (int *b = arr; b != e; ++b)  */
     // cout << *b << endl;
-  const int size = 10;
-  int arr[size];
+  // const int size = 10;
+  // int arr[size];
   // for (auto ptr = arr; ptr != arr + size; ++ptr) *ptr = 0;
   
   // for (auto i : arr) cout << i << " ";
   // cout << endl;
 
-  for (int *b = begin(arr); b != end(arr); ++b) {
-    *b = 0;
-  }
+  // for (int *b = begin( arr ); b != end (arr ); b++} {
+    // *b = 0;
+  // }
 
-  for (auto i : arr) cout << i << " ";
-  cout << end;
+  // for(int *p = begin(arr); arr != end(arr); p++)
+  // {
+      // *p = 0;
+  // }
 
+  // for (auto i : arr) cout << i << endl;
+
+  // char ca[] = {'C', '+', '+', '\n'};
+  // char s1[] = "Hello, C++";
+  // char s2[] = "Hello, C+";
+  // cout << strlen(ca) << endl;
+
+  // int result = strcmp(s1, s2);
+  // cout << result << endl;
+  // if (result == 0) {
+    // cout << "Strings are equal" << endl;
+  // } else {
+    // cout << "Strings are unequal, result is" << endl;
+  // }
+
+  
   return 0;
 }
