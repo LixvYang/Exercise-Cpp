@@ -49,6 +49,7 @@ int main() {
     mid = beg + (end - beg)/2;
   }
   
+  
 
   return 0;
 }
