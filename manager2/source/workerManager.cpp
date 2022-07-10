@@ -2,6 +2,9 @@
 #include "head/employee.h"
 #include "head/manager.h"
 #include "head/boss.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 WorkderManager::WorkderManager()
 {
@@ -10,7 +13,11 @@ WorkderManager::WorkderManager()
 
 WorkderManager::~WorkderManager()
 {
-
+  if (this->m_EmpArray != NULL)
+  {
+    delete[] this->m_EmpArray;
+    this->m_EmpArray = NULL;
+  }
 }
 
 void WorkderManager::Show_Menu()
@@ -36,17 +43,22 @@ void WorkderManager::exitSystem()
   exit(0);
 }
 
-void WorkderManager::Add_Emp()
+void WorkderManager:: Add_Emp()
 {
   cout << "请输入增加职工数量" << endl;
 
-  int add_Num = 0;
-  cin >> add_Num;
-  if (add_Num > 0) 
-  {
-    int newSize = this->m_EmpNum + add_Num;
+  int addNum = 0;
+  cin >> addNum;
+  cout << "输入成功" << endl;
+  if (addNum > 0) 
+  { 
+    cout << "NewSize创建中" << endl;
+    int newSize = this->m_EmpNum + addNum; // 新空间人数
+    cout << "NewSize创建成功" << endl;
 
-    Worker ** newSpace = new Worker * [newSize];
+    cout << "newSpace创建中" << endl;
+    Worker ** newSpace = new Worker*[newSize];
+    cout << "newSpace成功" << endl;
     if (this->m_EmpArray != NULL)
     {
       for (int i = 0; i < this->m_EmpNum; i++)
@@ -54,8 +66,10 @@ void WorkderManager::Add_Emp()
         newSpace[i] = this->m_EmpArray[i];
       }
     }
+    cout << "开辟新空间成功" << endl;
 
-    for (int i = 0; i < add_Num; i++)
+    // 批量添加数据
+    for (int i = 0; i < addNum; i++)
     {
       int id;
       string name;
@@ -93,10 +107,25 @@ void WorkderManager::Add_Emp()
     delete[] this->m_EmpArray;
     this->m_EmpArray = newSpace;
     this->m_EmpNum = newSize;
-    cout << " 成功添加 " << add_Num << "名新职工" << endl;
+    delete newSpace;
+    cout << " 成功添加 " << addNum << "名新职工" << endl;
   } else {
     cout << "输入有误" << endl;
   }
   system("pause");
   system("cls");
+}
+ 
+void WorkderManager::save() 
+{
+  ofstream ofs;
+  ofs.open(FILENAME, ios::out);
+
+  for (int i = 0; i < this->m_EmpNum; i++)
+  {
+    ofs << this->m_EmpArray[i]->m_Id << " "
+        << this->m_EmpArray[i]->m_Name << " "
+        << this->m_EmpArray[i]->m_DeptId << endl;
+  }
+  ofs.close();
 }

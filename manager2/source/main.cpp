@@ -41,6 +41,7 @@ int main()
       wm.exitSystem();
       break;
     case 1:
+      wm.Add_Emp();
       break;
     case 2:
       break;

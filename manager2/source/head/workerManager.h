@@ -1,6 +1,8 @@
 #pragma once // 防止头文件重复包含
 #include <iostream> 
-#include <worker.h>
+#include <fstream>
+#include "worker.h"
+#define FILENAME "empFile.txt"
 
 using namespace std;
 
@@ -11,6 +13,7 @@ public:
   void Show_Menu();
   void exitSystem();
   void Add_Emp();
+  void save();
   ~WorkderManager();
 
   int m_EmpNum;
