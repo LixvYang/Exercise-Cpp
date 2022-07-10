@@ -14,9 +14,10 @@ public:
   void exitSystem();
   void Add_Emp();
   void save();
+  int get_EmpNum();
   ~WorkderManager();
 
   int m_EmpNum;
-
+  bool m_FileIsEmpty;
   Worker ** m_EmpArray;
 };
