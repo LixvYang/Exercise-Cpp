@@ -44,8 +44,10 @@ int main()
       wm.Add_Emp();
       break;
     case 2:
+      wm.Show_Emp();
       break;
     case 3:
+        wm.Del_Emp();
       break;
     case 4:
       break;

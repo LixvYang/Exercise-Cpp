@@ -37,6 +37,16 @@ WorkderManager::WorkderManager()
   int num = this->get_EmpNum();
   cout << "职工个数为: " << num << endl;
   this->m_EmpNum = num;
+
+  this->m_EmpArray  = new Worker * [this->m_EmpNum];
+  this->init_Emp();
+
+  for (int i = 0; i < m_EmpNum; i++)
+  {
+    cout << "职工号:  " << this->m_EmpArray[i]->m_Id
+         << "职工姓名:  " << this->m_EmpArray[i]->m_Name
+         << "部门编号: " << this->m_EmpArray[i]->m_DeptId << endl;
+  }
 }
 
 WorkderManager::~WorkderManager()
@@ -177,4 +187,159 @@ int WorkderManager::get_EmpNum()
   
   ifs.close();
   return num;
+}
+
+void WorkderManager::init_Emp()
+{
+  ifstream ifs;
+  ifs.open(FILENAME, ios::in);
+
+  int id;
+  string name;
+  int dId;
+
+  int index = 0;
+  while (ifs >> id && ifs >> name && ifs >> dId)
+  { 
+    Worker * worker = NULL;
+    if (dId == 1)
+    {
+      worker = new Employee(id, name, dId);
+    }
+    else if (dId == 2)
+    {
+      worker = new Manager(id, name, dId);
+    }
+    else 
+    {
+      worker = new Boss(id, name, dId);
+    }
+    this->m_EmpArray[index] = worker;
+    index++;
+  }
+}
+
+void WorkderManager::Show_Emp()
+{
+  if (this->m_FileIsEmpty)
+  {
+    cout << "File NotFound" << endl;
+  }
+  else
+  {
+    for (int i = 0; i < m_EmpNum; i++)
+    {
+      this->m_EmpArray[i]->showInfo();
+    }
+  }
+  system("pause");
+  system("cls");
+}
+
+int WorkderManager::IsExist(int id)
+{
+  int index = -1;
+  
+  for (int i = 0; i < this->m_EmpNum; i++)
+  {
+    if (this->m_EmpArray[i]->m_Id == id)
+    {
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
+
+void WorkderManager::Del_Emp()
+{
+  if (this->m_FileIsEmpty)
+  {
+    cout << "File Not Found" << endl;
+  }
+  else
+  {
+    cout << "Input you want delete dId: " << endl;
+    int id = 0;
+    cin >> id;
+
+    int index = this->IsExist(id);
+    if (index != -1)
+    {
+      for (int i = index; i < this->m_EmpNum-1; i++)
+      {
+        this->m_EmpArray[i] = this->m_EmpArray[i+1];
+      }
+      this->m_EmpNum--;
+      this->save();
+      cout << "Del Success! " << endl;
+    }
+    else
+    {
+      cout << "Delete fault, not fount" << endl;
+    }
+  }
+
+  system("pause");
+  system("cls");
+}
+
+void WorkderManager::Mod_Emp()
+{
+  if (this->m_FileIsEmpty)
+  {
+    cout <<   "File not found!" << endl;
+  } 
+  else
+  {
+    cout << "Please input mod id " << endl;
+    int id;
+    cin >> id;
+
+    int ret =this->IsExist(id);
+    if (ret != -1)
+    {
+      delete this->m_EmpArray[ret];
+      int newId = 0;
+      string newName = "";
+      int dSelect = 0;
+
+      cout << "查到: " << id << "号职工, please input new id: " << endl;
+      cin >> newId;
+
+      cout << " Please input new name" << endl;
+      cin >> newName;
+
+      cout << "Please input 岗位: " << endl;
+      cout << "1. 普通职工" << endl;
+      cout << "2. 经理" << endl;
+      cout << "3. 老板 " << endl;
+      cin >>  dSelect;
+
+      Worker * worker = NULL;
+      switch (dSelect)
+      {
+      case 1:
+        worker = new Employee(newId, newName, dSelect);
+        break;
+      case 2:
+        worker = new Manager(newId, newName, dSelect);
+        break;
+      case 3:
+        worker = new Boss(newId, newName, dSelect);
+        break;
+      default:
+        break;
+      }
+      this->m_EmpArray[ret] = worker;
+      cout << "修改成功! " << this->m_EmpArray[ret]->m_DeptId << endl;
+      this->save();
+    } 
+    else 
+    {
+      cout << "not found" << endl;
+    }
+  }
+  system("pause");
+  system("cls");
 }

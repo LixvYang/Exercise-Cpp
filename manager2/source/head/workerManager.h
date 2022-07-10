@@ -15,6 +15,11 @@ public:
   void Add_Emp();
   void save();
   int get_EmpNum();
+  void init_Emp();
+  void Show_Emp();
+  void Del_Emp();
+  int IsExist(int id);
+  void Mod_Emp();
   ~WorkderManager();
 
   int m_EmpNum;
