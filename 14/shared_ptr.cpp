@@ -1,36 +1,22 @@
 #include <iostream>
-#include <vector>
 #include <memory>
-#include <string>
 using namespace std;
 
 int main()
 {
-  shared_ptr<string> s_p_1 = make_shared<string>();
-  unique_ptr<string> u_p_1 = make_unique<string>("Hello World");
+  shared_ptr<int> pointer = make_shared<int>(10);
+  shared_ptr<int> pointer2 = pointer;
+  auto pointer3 = pointer;
+  int *p = pointer.get();
+  cout << *p << endl;
+  std::cout << "pointer.use_count() = " << pointer.use_count() << std::endl;   // 3
+  std::cout << "pointer2.use_count() = " << pointer2.use_count() << std::endl; // 3
+  std::cout << "pointer3.use_count() = " << pointer3.use_count() << std::endl; // 3
 
-  if (s_p_1 && s_p_1->empty())
-  {
-    *s_p_1 = "hi";
-  }
-  cout << *s_p_1 << endl;
-  cout << &s_p_1 << endl;
-  auto p6 = make_shared<vector<string>>();
-
-  double *pd = new double(33);
-  delete pd;
-
-  const int *pci = new const int(1024);
-  delete pci;
-
-  int *p = new int(42);
-  auto q = p;
-  cout << *q << endl;
-  delete p;
-  p = nullptr;
-
-  vector<int>* v_i = new vector<int>();
-  cout << "v_i : " << v_i << endl;
+  pointer2.reset();
+  std::cout << "reset pointer2:" << std::endl;
+  std::cout << "pointer.use_count() = " << pointer.use_count() << std::endl;   // 2
+  std::cout << "pointer2.use_count() = " << pointer2.use_count() << std::endl;           // pointer2 已 reset; 0
 
   return 0;
 }

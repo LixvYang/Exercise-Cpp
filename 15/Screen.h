@@ -1,6 +1,7 @@
 #ifndef Screen
 #define Screen
 
+#include "window_mgr.h"
 #include <ostream>
 #include <string>
 using namespace std;
@@ -8,6 +9,7 @@ using namespace std;
 class Screen
 {
 public:
+  friend class Window_mgr;
   typedef std::string::size_type pos;
   Screen() = default;
   Screen(pos ht, pos wt, char c) : height(ht), width(wt), contents(ht * wt, c) {}
