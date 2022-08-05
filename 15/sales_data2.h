@@ -10,14 +10,22 @@ struct Sales_data
 	Sales_data(const std::string &s) :bookNo(s) {}
 	Sales_data(const std::string &s, unsigned n, double p) :bookNo(s), units_sold(n), revenue(n*p) {}
 	Sales_data(std::istream &is);
-
 	std::string isbn() const { return bookNo; };
 	Sales_data& combine(const Sales_data&);
+  Sales_data& operator=(const Sales_data);
 
 	std::string bookNo;
 	unsigned units_sold = 0;
 	double revenue = 0.0;
 };
+
+Sales_data& Sales_data::operator=(const Sales_data& rhs)
+{
+  bookNo = rhs.bookNo;
+  units_sold = rhs.units_sold;
+  revenue = rhs.revenue;
+  return *this;
+}
 
 std::istream &read(std::istream &is, Sales_data &item)
 {
