@@ -4,6 +4,10 @@
     "ostream": "cpp",
     "iostream": "cpp",
     "initializer_list": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "memory_resource": "cpp",
+    "utility": "cpp",
+    "memory": "cpp",
+    "iosfwd": "cpp"
   }
 }
