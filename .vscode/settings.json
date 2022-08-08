@@ -1,13 +1,6 @@
 {
-  "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
-    "ostream": "cpp",
-    "iostream": "cpp",
-    "initializer_list": "cpp",
-    "string": "cpp",
-    "memory_resource": "cpp",
-    "utility": "cpp",
-    "memory": "cpp",
-    "iosfwd": "cpp"
-  }
+    "memory_resource": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "Disabled"
 }

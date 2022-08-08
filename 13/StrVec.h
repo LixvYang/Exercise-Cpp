@@ -5,6 +5,7 @@
 #include <string>
 #include <utility>
 using namespace std;
+class StrVec;
 
 class StrVec
 {
