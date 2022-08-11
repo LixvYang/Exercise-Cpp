@@ -14,6 +14,8 @@ int main()
     int a[3][4];
     cout << sizeof(a) << endl;
   }
+  cout << "a" << endl;
+  cout << "b" << endl;
   // 栈空间
   int arr1[10];
   memset(arr1, 0, sizeof(arr1)); // 数字可以通过sizeof获取大小

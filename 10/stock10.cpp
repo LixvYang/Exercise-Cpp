@@ -1,4 +1,4 @@
-// stock1.cpp – Stock class implementation with constructors, destructor added
+m// stock1.cpp – Stock class implementation with constructors, destructor added
 #include <iostream>
 #include "stock10.h"
 
