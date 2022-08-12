@@ -1,9 +1,16 @@
+#include <memory>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
 #include <iostream>
-#include "test.h"
+
 using namespace std;
 
 int main()
 {
-  A a;  
+  int ia[6] = {25, 232l, 232,3, 2 ,1};
+  vector<int, allocator<int>> vi(ia, ia+6);
+  cout << count_if(vi.begin(), vi.end(), not1(bind2nd(less<int>(), 40)));
   return 0;
 }
