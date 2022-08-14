@@ -1,6 +1,10 @@
 {
   "files.associations": {
-    "memory_resource": "cpp"
+    "memory_resource": "cpp",
+    "array": "cpp",
+    "type_traits": "cpp",
+    "ctime": "cpp",
+    "iostream": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }
