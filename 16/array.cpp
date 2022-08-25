@@ -11,7 +11,6 @@ namespace jj01
   void test_array()
   {
     cout << "\ntest Array()..........\n";
-    list<int> c;
 
     array<long, ASIZE> c;
     clock_t timeStart = clock();
