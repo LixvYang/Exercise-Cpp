@@ -5,7 +5,8 @@
     "type_traits": "cpp",
     "ctime": "cpp",
     "iostream": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "stdlib.h": "c"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }
