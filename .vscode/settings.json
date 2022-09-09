@@ -6,7 +6,8 @@
     "ctime": "cpp",
     "iostream": "cpp",
     "ostream": "cpp",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "struct_timeval.h": "c"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }
