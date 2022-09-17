@@ -15,8 +15,7 @@ int main(int argc, char const *argv[])
     printf("Child PID: %d \n", pid);
     pid = fork();
     if (pid == 0) {
-    sleep(1);
-
+      sleep(1);
       exit(7); 
     } else {
       printf("Child PID: %d \n", pid);
