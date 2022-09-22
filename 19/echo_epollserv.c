@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
     event_cnt =  epoll_wait(epfd, ep_events, EPOLL_SIZE, -1);
     if (event_cnt == -1) {
       puts("epoll_wait() error");
-      break;
+      break; 
     }
 
     for (int i = 0; i < event_cnt; i++) {

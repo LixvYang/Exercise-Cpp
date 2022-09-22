@@ -1,23 +1,27 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int gval = 10;
 int main(int argc, char const *argv[])
 {
   pid_t pid;
-  int lval= 20;
-  gval++, lval+=5;
+  int gval = atoi(argv[1]);
+  printf("global gval: %d \n", gval);
   pid = fork();
   if (pid == 0) {
-    gval+=2, lval+=2;
+    // Child process
+    gval-=20;
   } else {
-    gval-=2, lval-=2;
+    // Parent process
+    gval+=20;
   }
 
   if (pid == 0) {
-    printf("Chird Proc: [%d, %d]\n", gval, lval);
+    // Child process
+    printf("Chird Proc: [%d]\n", gval);
   } else {
-    printf("Parent Proc: [%d, %d]\n", gval, lval);
+    // Parent process
+    printf("Parent Proc: [%d]\n", gval);
   }
   return 0;
 }

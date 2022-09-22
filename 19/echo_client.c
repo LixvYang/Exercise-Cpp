@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
   }
 
   sock = socket(AF_INET, SOCK_STREAM, 0);
+  
   if (sock == -1)
   {
     error_handling("socket() error");
@@ -49,6 +50,7 @@ int main(int argc, char *argv[])
     if (!strcmp(message, "q\n") || !strcmp(message, "Q\n"))
       break;
     write(sock, message, strlen(message));
+    send(sock, message, strlen(message), MSG_OOB);
     str_len = read(sock, message, BUFSIZ - 1);
     message[str_len] = 0;
     printf("Message from server: %s", message);
